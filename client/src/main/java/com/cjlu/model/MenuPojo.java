@@ -9,4 +9,5 @@ public class MenuPojo {
     private double price;
     private String flavor;
     private int tid;
+    private TypePojo type;
 }

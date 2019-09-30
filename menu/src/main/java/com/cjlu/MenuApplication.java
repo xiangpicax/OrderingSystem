@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @EnableEurekaClient
 @SpringBootApplication
-@MapperScan("com.cjlu.service")
+@MapperScan("com.cjlu.mapper")
 public class MenuApplication {
     public static void main(String[] args) {
         SpringApplication.run(MenuApplication.class,args);

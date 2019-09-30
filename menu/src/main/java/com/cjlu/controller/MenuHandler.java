@@ -1,14 +1,13 @@
 package com.cjlu.controller;
 
+import com.cjlu.mapper.TypeMapper;
 import com.cjlu.model.MenuPojo;
-import com.cjlu.service.MenuService;
+import com.cjlu.mapper.MenuMapper;
+import com.cjlu.model.TypePojo;
 import com.cjlu.util.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +15,9 @@ import java.util.List;
 @RequestMapping("/menu")
 public class MenuHandler {
     @Autowired
-    private MenuService menuService;
+    private MenuMapper menuMapper;
+    @Autowired
+    private TypeMapper typeMapper;
 
     @Value("${server.port}")
     String port;
@@ -27,8 +28,29 @@ public class MenuHandler {
     @GetMapping("/findAll/{index}/{limit}")
     public ApiResult findall(@PathVariable("index") int index, @PathVariable("limit") int limit){
         ApiResult<List<MenuPojo>> apiResult = new ApiResult();
-        apiResult.setCount(menuService.count());
-        return  apiResult.success(menuService.findAll(index,limit));
-
+        apiResult.setCount(menuMapper.count());
+        return  apiResult.success(menuMapper.findAll(index,limit));
+    }
+    @DeleteMapping("/deleteById/{id}")
+    public void deleteById(@PathVariable("id") long id){
+        menuMapper.deleteById(id);
+    }
+    @GetMapping("/findTypes")
+    public ApiResult findTypes(){
+        ApiResult<List<TypePojo>> apiResult = new ApiResult<>();
+        apiResult.setData(typeMapper.findAll());
+        return apiResult;
+    }
+    @PostMapping("/save")
+    public void save(@RequestBody  MenuPojo menuPojo){
+        menuMapper.save(menuPojo);
+    }
+    @GetMapping("/findById/{id}")
+    public MenuPojo findById(@PathVariable("id") long id){
+       return menuMapper.findById(id);
+    }
+    @PutMapping("/update")
+    public void update(@RequestBody MenuPojo menuPojo){
+        menuMapper.update(menuPojo);
     }
 }

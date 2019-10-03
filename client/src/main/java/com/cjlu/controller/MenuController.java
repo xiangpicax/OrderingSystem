@@ -2,6 +2,7 @@ package com.cjlu.controller;
 
 import com.cjlu.feign.MenuFeign;
 import com.cjlu.model.MenuPojo;
+import com.cjlu.model.TypePojo;
 import com.cjlu.util.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,4 +45,21 @@ public class MenuController {
         menuFeign.save(menuPojo);
         return "redirect:/menu/redirect/index";
     }
+    @GetMapping("/findById/{id}")
+    public ModelAndView findById(@PathVariable("id") long id){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("menu_update");
+        modelAndView.addObject("menu",menuFeign.findById(id));
+        TypePojo typePojo = new TypePojo();
+        modelAndView.addObject("list",menuFeign.findTypes().getData());
+        return modelAndView;
+
+    }
+    @PostMapping("/update")
+    public String update(MenuPojo menuPojo){
+        menuFeign.update(menuPojo);
+        return "redirect:/menu/redirect/index";
+    }
+
+
 }

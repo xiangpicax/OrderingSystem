@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cjlu.mapper.OrderMapper">
+	<resultMap id="orderMap" type="com.cjlu.model.OrderPojo">
+		<id column="id" property="id"></id>
+		<result column="date" property="date"></result>
+		<result column="state" property="state"></result>
+		<association property="menu" select="com.cjlu.mapper.MenuMapper.findById" column="mid"></association>
+	</resultMap>
+    <insert id="save" parameterType="com.cjlu.model.OrderPojo">
+		insert into t_order(uid,mid,aid,date,state) values(#{user.id},#{menu.id},#{admin.id},#{date},0)
+	</insert>
+	<select id="findAll" resultMap="orderMap">
+		select id,mid,date,state from t_order limit #{param1},#{param2}
+	</select>
+</mapper>

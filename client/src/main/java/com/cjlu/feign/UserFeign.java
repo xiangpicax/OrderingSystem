@@ -1,6 +1,7 @@
 package com.cjlu.feign;
 
 import com.cjlu.model.MenuPojo;
+import com.cjlu.model.UserPojo;
 import com.cjlu.util.ApiResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,9 @@ public interface UserFeign {
     @GetMapping("user/findTypes")
     public ApiResult findTypes();
     @PostMapping("user/save")
-    public String save(MenuPojo menuPojo);
+    public Void save(UserPojo userPojo);
     @GetMapping("user/findById/{id}")
     public MenuPojo findById(@PathVariable("id") long id);
     @PutMapping("user/update")
-    public void update(MenuPojo menuPojo);
+    public void update(UserPojo userPojo);
 }

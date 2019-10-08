@@ -43,7 +43,7 @@ public class MenuController {
     @PostMapping("/save")
     public String save(MenuPojo menuPojo){
         menuFeign.save(menuPojo);
-        return "redirect:/menu/redirect/index";
+        return "redirect:/menu/redirect/menu_manage";
     }
     @GetMapping("/findById/{id}")
     public ModelAndView findById(@PathVariable("id") long id){
@@ -58,7 +58,7 @@ public class MenuController {
     @PostMapping("/update")
     public String update(MenuPojo menuPojo){
         menuFeign.update(menuPojo);
-        return "redirect:/menu/redirect/index";
+        return "redirect:/menu/redirect/menu_manage";
     }
 
 

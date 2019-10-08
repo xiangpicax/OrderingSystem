@@ -8,11 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="user" />
         <module name="menu" />
+        <module name="client" />
         <module name="order" />
         <module name="account" />
-        <module name="configserver" />
         <module name="eureakaserver" />
-        <module name="client" />
+        <module name="configserver" />
       </profile>
     </annotationProcessing>
   </component>

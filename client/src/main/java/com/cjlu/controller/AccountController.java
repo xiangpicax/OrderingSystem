@@ -36,7 +36,7 @@ public class AccountController {
                     adminPojo.setId(Long.parseLong(linkedHashMap.get("id")+""));
                     adminPojo.setUsername((String)linkedHashMap.get("username"));
                     session.setAttribute("admin",adminPojo);
-                    result = "menu_manage";
+                    result = "main";
                     break;
             }
         }

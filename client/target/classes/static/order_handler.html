@@ -20,7 +20,7 @@
 
             table.render({
                 elem: '#test'
-                ,url:'/order/findAllByState'
+                ,url:'/order/findAll'
                 ,title: '订单列表'
                 ,cols: [
                     [
@@ -40,9 +40,10 @@
                             }
                         }
                         ,{field:'nickname', width:80, title: '用户',templet:function(data){
-                                return data.user.nickname
-                            }
+
+                            return data.user.nickname
                         }
+                    }
                         ,{field:'telephone', width:140, title: '联系电话',templet:function(data){
                                 return data.user.telephone
                             }
@@ -62,7 +63,7 @@
             table.on('tool(test)', function(obj){
                 var data = obj.data;
                 if(obj.event === 'send'){
-                    window.location.href="/order/updateState/"+data.id+"/1";
+                    window.location.href="/order/updateState/"+data.id;
                 }
             });
         });

@@ -5,9 +5,9 @@ spring:
     name: menu
   datasource:
     name: orderingsystem
-    url: jdbc:mysql://localhost:3306/orderingsystem?characterEncoding=UTF-8&useUnicode=true&serverTimezone=UTC
+    url: jdbc:mysql://39.108.86.144:3306/orderingsystem?characterEncoding=UTF-8&useUnicode=true&serverTimezone=UTC
     username: root
-    password: tiger
+    password: 1qaz@WSX
 eureka:
   client:
     service-url:

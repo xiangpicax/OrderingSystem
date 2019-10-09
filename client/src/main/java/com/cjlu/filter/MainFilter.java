@@ -24,7 +24,7 @@ public class MainFilter implements Filter {
         HttpSession session = servlet.getSession();
         AdminPojo adminPojo = (AdminPojo) session.getAttribute("admin");
         if(adminPojo == null){
-            response.sendRedirect("http://localhost:8030/login.html");
+            response.sendRedirect("http://http://39.108.86.144:8030/login.html");
         }else{
             filterChain.doFilter(servletRequest,servletResponse);
         }
